@@ -23,4 +23,16 @@ using Giverspace;
 
 3. Add additional logging formats by modifying the sections of `Logging/Logger.cs` that indicate `TODO:`
 
+## Interpreting timestamps:
+
+```
+function JSTimestampFromTicks(ticks) {
+  //621355968000000000 is new DateTime(1970, 1, 1).Ticks in C#
+  // 10000000 is TimeSpan.TicksPerSecond in C#
+  var unixTimestamp = ticks - 621355968000000000;
+  unixTimestamp /= 10000000;
+  return new Date(unixTimestamp * 1000);
+}
+```
+
 ## License: MIT
